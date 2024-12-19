@@ -11,6 +11,7 @@ An Order Management System for delivery/takeaway restaurant operations.
 - Best Practices
 - Dependency Injection
 - EF Core (9.0.0)
+- Swagger
 
 ### Features
 - Ability to switch between public and admin mode
