@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row" *ngFor="let order of orderService.orders(); let i = index">
+        <div class="col-6">
+          
+            <div class="card mb-3">
+                  <div class="card-body">                  
+                  <div class="fw-bold" *ngIf="order.isDelivery">ORDER (Delivery)</div>
+                  <div class="fw-bold" *ngIf="!order.isDelivery">ORDER (Pickup)</div>
+                  <div *ngFor="let item of order.basket; let j = index">
+                    <div>{{item.quantity}} x {{item.item.name}}</div>
+                  </div>
+                  <hr/>
+                  <div class="fw-bold">Customer Details </div>
+                  <div>First name: {{order.customer.firstName}}</div>
+                  <div>Last name: {{order.customer.lastName}}</div>
+                  <div>Address: {{order.customer.addressLine}}</div>
+                  <div>Postcode: {{order.customer.postcode}}</div>
+                  <div>Phone number: {{order.customer.phoneNumber}}</div>
+                  <div>Special Instructions: {{order.customer.specialInstructions}}</div>
+                  <hr/>
+                  <div class="fw-bold">Total Price: &#8364;{{order.totalPrice}}</div>
+                  <div>Status: {{order.status}}</div>
+                  <div><small>Date Updated: {{order.updatedDate}}</small></div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

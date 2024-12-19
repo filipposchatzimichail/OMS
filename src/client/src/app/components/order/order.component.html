@@ -1,0 +1,73 @@
+
+<h1 id="tableLabel">Order</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of basketService.basketItems()">   
+                
+            <td>{{ item.item.name }}</td>
+            <td>&#8364;{{ item.item.price }}</td>
+            <td>{{ item.quantity }}</td>    
+            <td>&#8364;{{ basketService.itemPrice(item) }}</td>         
+        </tr>
+        <tr *ngIf="basketService.basketItems().length > 0">                   
+            <td class="fw-bold">Total</td> 
+            <td></td>
+            <td></td>
+            <td class="fw-bold">&#8364;{{basketService.totalPrice()}}</td>       
+        </tr>
+
+    </tbody>
+  </table>  
+
+  <div class="row">
+    <label for="new-first-name">First name</label>
+    <input type="text" id="new-first-name" name="new-first-name" value="" />
+  </div>
+
+  <div class="row">
+    <label for="new-last-name">Last name</label>
+    <input type="text" id="new-last-name" name="new-last-name" value="" />
+  </div>
+
+
+
+  <div class="row">
+    <label for="new-phone-number">Phone number</label>
+    <input type="text" id="new-phone-number" name="new-phone-number" value="" />
+  </div>
+
+  <div class="row">
+    <label for="new-address-line">Address (required for delivery)</label>
+    <input type="text" id="new-address-line" name="new-address-line" value="" />
+  </div>
+
+  <div class="row">
+    <label for="new-postcode">Postcode (required for delivery)</label>
+    <input type="text" id="new-postcode" name="new-postcode" value="" />
+  </div>
+
+  <div class="row">
+    <label for="new-special-instructions">Special Instructions</label>
+
+    <textarea id="new-special-instructions" name="new-special-instructions" rows="4" cols="50"></textarea>
+    
+
+  </div>
+
+
+  <div class="row mt-3">
+    <button type="button" class="btn btn-primary me-3" (click)="save()" placement="top" ngbTooltip="Place order">
+      Place Order
+    </button>
+  </div>
+  

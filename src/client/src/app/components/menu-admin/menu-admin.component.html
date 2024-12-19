@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 id="tableLabel">Menu</h1>
+
+      <table class="table" *ngIf="menuService.menuItems()">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of menuService.menuItems(); let i = index">
+            <td *ngIf="editingMenuItemIndex === i">
+              <input
+                type="text"
+                id="menu-item-name-{{ i }}"
+                name="menu-item-name-{{ i }}"
+                value="{{ item.name }}" />
+            </td>
+            <td *ngIf="editingMenuItemIndex !== i">{{ item.name }}</td>
+
+            <td *ngIf="editingMenuItemIndex === i">
+              &#8364;<input
+                type="text"
+                id="menu-item-price-{{ i }}"
+                name="menu-item-price-{{ i }}"
+                value="{{ item.price }}" />
+            </td>
+            <td *ngIf="editingMenuItemIndex !== i">&#8364;{{ item.price }}</td>
+            <td>
+              <button
+                *ngIf="editingMenuItemIndex !== i"
+                type="button"
+                class="btn btn-default me-3"
+                (click)="edit(i)"
+                placement="top"
+                ngbTooltip="Edit item">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button
+                *ngIf="editingMenuItemIndex === i"
+                type="button"
+                class="btn btn-default me-3"
+                (click)="save(i, item)"
+                placement="top"
+                ngbTooltip="Save changes">
+                <i class="bi bi-save"></i>
+              </button>
+              <button
+                *ngIf="editingMenuItemIndex === i"
+                type="button"
+                class="btn btn-default me-3"
+                (click)="delete(item)"
+                placement="top"
+                ngbTooltip="Delete item">
+                <i class="bi bi-dash-circle"></i>
+              </button>
+              <button
+                *ngIf="editingMenuItemIndex === i"
+                type="button"
+                class="btn btn-default me-3"
+                (click)="cancelEditing()"
+                placement="top"
+                ngbTooltip="Cancel editing">
+                <i class="bi bi-x-circle"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td scope="col">
+              <input
+                *ngIf="addingNewItemInProgress"
+                type="text"
+                id="menu-item-name-new"
+                name="menu-item-name-new"
+                value />
+            </td>
+            <td scope="col">
+              <input
+                *ngIf="addingNewItemInProgress"
+                type="text"
+                id="menu-item-price-new"
+                name="menu-item-price-new"
+                value="0" />
+            </td>
+            <td scope="col">
+              <button
+                *ngIf="!addingNewItemInProgress"
+                type="button"
+                class="btn btn-default me-3"
+                (click)="addingNewItemInProgress = true"
+                placement="top"
+                ngbTooltip="Add new Item">
+                <i class="bi bi-plus-circle"></i>
+              </button>
+              <button
+                *ngIf="addingNewItemInProgress"
+                type="button"
+                class="btn btn-default me-3"
+                (click)="addNew()"
+                placement="top"
+                ngbTooltip="Save changes">
+                <i class="bi bi-save"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

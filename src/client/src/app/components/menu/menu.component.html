@@ -1,0 +1,2 @@
+<app-menu-admin *ngIf="userService.isLoggedIn()"></app-menu-admin>
+<app-menu-public *ngIf="!userService.isLoggedIn()"></app-menu-public>
