@@ -15,7 +15,7 @@ An Order Management System for delivery/takeaway restaurant operations.
 ### Features
 - Ability to switch between public and admin mode
 - Ability to create delivery or pickup orders
-- Ability to modify (Add/Remove/Update) the current Menu (Admin mode)
+- Ability to modify (Add/Remove/Update/Delete) the current Menu (Admin mode)
 - Ability to view all orders (Admin mode)
 
 ### Setup Instructions
